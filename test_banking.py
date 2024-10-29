@@ -16,6 +16,8 @@ https://google.github.io/styleguide/pyguide.html
 
 """
 
+from banking import Account
+
 def test_initialization():
     """Test that account object is initialized with transactions attribute"""
     test_account = Account()  #  Account object initialized for testing
