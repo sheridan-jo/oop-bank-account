@@ -15,3 +15,8 @@ Documented according to Google Style Docstrings
 https://google.github.io/styleguide/pyguide.html
 
 """
+
+def test_initialization():
+    """Test that account object is initialized with transactions attribute"""
+    test_account = Account()  #  Account object initialized for testing
+    assert not test_account.transactions  #  Returns True if transactions[] is empty

@@ -13,3 +13,8 @@ Documented according to Google Style Docstrings
 https://google.github.io/styleguide/pyguide.html
 
 """
+
+class Account:
+    """A class representing a bank account with a list of transactions"""
+    def __init__(self):
+        self.transactions = []  #  List of deposits and withdrawals
