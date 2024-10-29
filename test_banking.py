@@ -16,9 +16,19 @@ https://google.github.io/styleguide/pyguide.html
 
 """
 
-from banking import Account
+from banking import Account, Transaction
 
 def test_initialization():
     """Test that account object is initialized with transactions attribute"""
     test_account = Account()  #  Account object initialized for testing
-    assert not test_account.transactions  #  Returns True if transactions[] is empty
+
+    #  Returns True if transactions[] is empty
+    assert not test_account.transactions
+
+def test_amount():
+    """Test that the 'amount' parameter of 'Transaction' class is bound to 'self' """
+    sample_amount = 100  #  Value to be added to 'amount' parameter
+    test_transaction = Transaction(sample_amount)  #  Transaction object initialized
+
+    #  Returns True if 'sample_amount' is the same as the 'amount' property in 'test_transaction'
+    assert sample_amount == test_transaction.amount
