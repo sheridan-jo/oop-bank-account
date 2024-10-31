@@ -70,10 +70,26 @@ def test_repr():
     #  Passed as argument for 'timestamp'
     test_timestamp = datetime.datetime(2024, 1, 1, 12, 0)
 
-    test_transaction = Transaction(sample_amount, test_timestamp)  #  Transaction instance
+    #  Transaction instance for this test
+    test_transaction = Transaction(sample_amount, test_timestamp)
 
     # The expected string output of the repr method
     expected_repr = "Transaction(99.99, datetime.datetime(2024, 1, 1, 12, 0))"
 
     #  Passes if repr method of test_transaction is the same as expected_repr
     assert repr(test_transaction) == expected_repr
+
+def test_str_with_positive_amount():
+    """Tests that str method returns the expected string output"""
+
+    #  Passed as argument for 'timestamp'
+    test_timestamp = datetime.datetime(2024, 1, 1, 12, 0)
+
+    #  Transaction instance for this test
+    test_transaction = Transaction(1234.56, test_timestamp)
+
+    #  Expected output for str method
+    expected_str = "2024-01-01: +$1,234.56"
+
+    #  Passes if str method of test_transaction is the same as expected_str
+    assert str(test_transaction) == expected_str

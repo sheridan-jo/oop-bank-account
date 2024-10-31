@@ -50,6 +50,7 @@ class Transaction:
             Set to current date and time if no timestamp is provided.
     """
 
+    #  Transaction class constructor
     def __init__(self, amount, timestamp=None):
         #  Ensures that 'amount' is converted to a Decimal
         self.amount = Decimal(amount) if isinstance(amount, Decimal) else Decimal(str(amount))
@@ -57,6 +58,7 @@ class Transaction:
         #  Sets timestamp to current date and time if no argument is entered
         self.timestamp = timestamp or datetime.datetime.now()
 
+    #  String representation for copying and pasting code
     def __repr__(self):
         #  Returns string representation of Transaction instance
         return f"Transaction({self.amount}, {self.timestamp!r})"
