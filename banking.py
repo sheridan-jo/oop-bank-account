@@ -51,8 +51,12 @@ class Transaction:
     """
 
     def __init__(self, amount, timestamp=None):
-        self.amount = Decimal(amount)  #  Converts 'amount' to Decimal
+        #  Ensures that 'amount' is converted to a Decimal
+        self.amount = Decimal(amount) if isinstance(amount, Decimal) else Decimal(str(amount))
 
         #  Sets timestamp to current date and time if no argument is entered
         self.timestamp = timestamp or datetime.datetime.now()
 
+    def __repr__(self):
+        #  Returns string representation of Transaction instance
+        return f"Transaction({self.amount}, {self.timestamp!r})"

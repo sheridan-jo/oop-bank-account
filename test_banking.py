@@ -28,7 +28,7 @@ def test_initialization():
     """Test that account object is initialized with transactions attribute"""
     test_account = Account()  #  Account object initialized for testing
 
-    #  Returns True if transactions[] is empty
+    #  Passes if transactions[] is empty
     assert not test_account.transactions
 
 def test_amount():
@@ -36,7 +36,7 @@ def test_amount():
     sample_amount = 100  #  Value to be added to 'amount' parameter
     test_transaction = Transaction(sample_amount)  #  Transaction object initialized
 
-    #  Returns True if 'sample_amount' is the same as 'amount' property in 'test_transaction'
+    #  Passes if 'sample_amount' is the same as 'amount' property in 'test_transaction'
     assert sample_amount == test_transaction.amount
 
 def test_timestamp_with_argument():
@@ -44,7 +44,7 @@ def test_timestamp_with_argument():
     test_date = datetime.datetime(2024,1,1)  # Added to 'timestamp' parameter
     test_transaction = Transaction(100,test_date)  #  Transaction object initialized
 
-    #  Returns True if 'test_date' is the same as 'timestamp' property in 'test_transaction'
+    #  Passes if 'test_date' is the same as 'timestamp' property in 'test_transaction'
     assert test_date == test_transaction.timestamp
 
 def test_timestamp_without_argument():
@@ -59,5 +59,21 @@ def test_timestamp_without_argument():
     test_transaction = Transaction(100)  #  Transaction object initialized
     end_time = datetime.datetime.now()  #  Time after creating Transaction instance
 
-    #  Returns True if timestamp property is close to the current time
+    #  Passes if timestamp property is close to the current time
     assert start_time <= test_transaction.timestamp <= end_time
+
+
+def test_repr():
+    """Tests that repr method returns the expected string output"""
+    sample_amount = 99.99  # Passed as argument for 'amount'
+
+    #  Passed as argument for 'timestamp'
+    test_timestamp = datetime.datetime(2024, 1, 1, 12, 0)
+
+    test_transaction = Transaction(sample_amount, test_timestamp)  #  Transaction instance
+
+    # The expected string output of the repr method
+    expected_repr = "Transaction(99.99, datetime.datetime(2024, 1, 1, 12, 0))"
+
+    #  Passes if repr method of test_transaction is the same as expected_repr
+    assert repr(test_transaction) == expected_repr
