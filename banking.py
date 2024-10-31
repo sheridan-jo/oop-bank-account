@@ -26,6 +26,7 @@ https://google.github.io/styleguide/pyguide.html
 """
 
 from decimal import Decimal
+import datetime
 
 class Account:
     """
@@ -49,5 +50,6 @@ class Transaction:
             Set to current date and time if no timestamp is provided.
     """
 
-    def __init__(self, amount):
+    def __init__(self, amount, timestamp=None):
         self.amount = Decimal(amount)  #  Converts 'amount' to Decimal
+        self.timestamp = timestamp or datetime.datetime.now()  #  Sets timestamp

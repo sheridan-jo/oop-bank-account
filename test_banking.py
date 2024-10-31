@@ -11,12 +11,17 @@ properties and methods.
 Usage:
 Run this test module using pytest.
 
+Imports:
+    banking: Used for accurate representation of dollar values.
+    datetime: Provides date and time for transaction timestamps.
+
 Documented according to Google Style Docstrings
 https://google.github.io/styleguide/pyguide.html
 
 """
 
 from banking import Account, Transaction
+import datetime
 
 def test_initialization():
     """Test that account object is initialized with transactions attribute"""
@@ -26,9 +31,17 @@ def test_initialization():
     assert not test_account.transactions
 
 def test_amount():
-    """Test that the 'amount' parameter of 'Transaction' class is bound to 'self' """
+    """Test that the 'amount' parameter of 'Transaction' class is bound to self"""
     sample_amount = 100  #  Value to be added to 'amount' parameter
     test_transaction = Transaction(sample_amount)  #  Transaction object initialized
 
-    #  Returns True if 'sample_amount' is the same as the 'amount' property in 'test_transaction'
+    #  Returns True if 'sample_amount' is the same as 'amount' property in 'test_transaction'
     assert sample_amount == test_transaction.amount
+
+def test_timestamp():
+    """Tests that the 'timestamp' parameter of 'Transaction' class is bound to self"""
+    test_date = datetime.datetime(2024,1,1)  # Added to 'timestamp' parameter
+    test_transaction = Transaction(100,test_date)  #  Transaction object initialized
+
+    #  Returns True if 'test_date' is the same as 'timestamp' property in 'test_transaction'
+    assert test_date == test_transaction.timestamp
