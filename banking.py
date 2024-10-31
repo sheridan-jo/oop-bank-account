@@ -2,7 +2,7 @@
 Python Development II
 Assignment 5 - OOP Bank Account
 John O.
-October 29, 2024
+October 31, 2024
 
 This program models a bank account. It contains a class called 'Account'
 which contains the property 'transactions',as well as the methods
@@ -52,4 +52,6 @@ class Transaction:
 
     def __init__(self, amount, timestamp=None):
         self.amount = Decimal(amount)  #  Converts 'amount' to Decimal
-        self.timestamp = timestamp or datetime.datetime.now()  #  Sets timestamp
+
+        #  Sets timestamp to current date and time if no argument is entered
+        self.timestamp = timestamp or datetime.datetime.now()

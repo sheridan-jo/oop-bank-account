@@ -3,7 +3,7 @@ Python Development II
 Assignment 5 - OOP Bank Account
 Test Suite for banking.py module
 John O.
-October 29, 2024
+October 31, 2024
 
 This is a test suite for the banking.py module which tests its
 properties and methods.
@@ -20,8 +20,9 @@ https://google.github.io/styleguide/pyguide.html
 
 """
 
-from banking import Account, Transaction
 import datetime
+from banking import Account, Transaction
+
 
 def test_initialization():
     """Test that account object is initialized with transactions attribute"""
@@ -38,10 +39,17 @@ def test_amount():
     #  Returns True if 'sample_amount' is the same as 'amount' property in 'test_transaction'
     assert sample_amount == test_transaction.amount
 
-def test_timestamp():
-    """Tests that the 'timestamp' parameter of 'Transaction' class is bound to self"""
+def test_timestamp_with_argument():
+    """Tests that 'timestamp' in 'Transaction' class is bound to self with argument entered"""
     test_date = datetime.datetime(2024,1,1)  # Added to 'timestamp' parameter
     test_transaction = Transaction(100,test_date)  #  Transaction object initialized
 
     #  Returns True if 'test_date' is the same as 'timestamp' property in 'test_transaction'
     assert test_date == test_transaction.timestamp
+
+def test_timestamp_without_argument():
+    """Tests that 'timestamp' in 'Transaction' class is bound to self with default timestamp"""
+    test_transaction = Transaction(100)  #  Transaction object with no timestamp added
+
+    #  Returns True if default 'timestamp' is the same as current date and time
+    assert test_transaction.timestamp == datetime.datetime.now()
