@@ -55,3 +55,4 @@ class Transaction:
 
         #  Sets timestamp to current date and time if no argument is entered
         self.timestamp = timestamp or datetime.datetime.now()
+

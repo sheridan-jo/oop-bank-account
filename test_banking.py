@@ -48,8 +48,16 @@ def test_timestamp_with_argument():
     assert test_date == test_transaction.timestamp
 
 def test_timestamp_without_argument():
-    """Tests that 'timestamp' in 'Transaction' class is bound to self with default timestamp"""
-    test_transaction = Transaction(100)  #  Transaction object with no timestamp added
+    """
+    Tests that 'timestamp' in 'Transaction' class is bound to self with default timestamp.
 
-    #  Returns True if default 'timestamp' is the same as current date and time
-    assert test_transaction.timestamp == datetime.datetime.now()
+    This test is designed to account for slight time delays between the current time
+    and the time that the Transaction instance was created.
+    """
+
+    start_time = datetime.datetime.now()  #  Time before creating Transaction instance
+    test_transaction = Transaction(100)  #  Transaction object initialized
+    end_time = datetime.datetime.now()  #  Time after creating Transaction instance
+
+    #  Returns True if timestamp property is close to the current time
+    assert start_time <= test_transaction.timestamp <= end_time
