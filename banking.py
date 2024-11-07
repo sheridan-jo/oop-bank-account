@@ -41,6 +41,7 @@ class Account:
     def __init__(self):
         self.transactions = []  # Initializes an empty transaction list for each account.
 
+
 #  Code for the Transaction class
 
 class Transaction:
@@ -72,10 +73,8 @@ class Transaction:
 
         #  Returns user-friendly string representation
         if self.amount > 0:
+            #  Representation of deposits
             return f"{self.timestamp.strftime('%Y-%m-%d')}: +${self.amount:,.2f}"
         else:
+            #  Representation of withdrawals
             return f"{self.timestamp.strftime('%Y-%m-%d')}: -${abs(self.amount):,.2f}"
-
-sample_transaction = Transaction(-200)
-
-print(sample_transaction)

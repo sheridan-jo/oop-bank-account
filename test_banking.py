@@ -93,3 +93,18 @@ def test_str_with_positive_amount():
 
     #  Passes if str method of test_transaction is the same as expected_str
     assert str(test_transaction) == expected_str
+
+def test_str_with_negative_amount():
+    """Tests that str method returns the expected string output with a negative amount"""
+
+    #  Passed as argument for 'timestamp'
+    test_timestamp = datetime.datetime(2024, 1, 1, 12, 0)
+
+    #  Transaction instance for this test
+    test_transaction = Transaction(-1234.56, test_timestamp)
+
+    #  Expected output for str method
+    expected_str = "2024-01-01: -$1,234.56"
+
+    #  Passes if str method of test_transaction is the same as expected_str
+    assert str(test_transaction) == expected_str
