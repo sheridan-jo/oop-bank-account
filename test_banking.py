@@ -42,8 +42,9 @@ def test_deposit():
     """
     test_account = Account()  #  Account object initialized for testing
 
-    test_account.deposit(-100)
+    test_account.deposit(-100)  #  Negative value enter for amount parameter
 
+    #  Passes if the last transaction amount is stored as a positive Decimal value
     assert test_account.transactions[-1].amount == Decimal(100)
 
 #  Tests for Transaction

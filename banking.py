@@ -41,6 +41,21 @@ class Account:
     def __init__(self):
         self.transactions = []  # Initializes an empty transaction list for each account.
 
+    def deposit(self, amount):
+        """
+            Creates a deposit transaction and adds it to the list of transactions.
+
+            Parameters:
+            amount(Decimal): The amount to be deposited, as a positive value
+        """
+
+        #  Ensures that 'amount' is converted to a Decimal
+        amount = Decimal(amount) if isinstance(amount, Decimal) else Decimal(str(amount))
+        amount = abs(amount)  # Converts 'amount' to positive value
+
+        #  Creates Transaction instance and appends it to the list of transactions
+        transaction = Transaction(amount)
+        self.transactions.append(transaction)
 
 #  Code for the Transaction class
 
