@@ -28,6 +28,8 @@ https://google.github.io/styleguide/pyguide.html
 from decimal import Decimal
 import datetime
 
+#  Code for the Account class
+
 class Account:
     """
     A class representing a bank account with a list of transactions
@@ -38,6 +40,8 @@ class Account:
 
     def __init__(self):
         self.transactions = []  # Initializes an empty transaction list for each account.
+
+#  Code for the Transaction class
 
 class Transaction:
     """
@@ -60,5 +64,18 @@ class Transaction:
 
     #  String representation for copying and pasting code
     def __repr__(self):
-        #  Returns string representation of Transaction instance
+        #  Returns string representation of Transaction instance for coding
         return f"Transaction({self.amount}, {self.timestamp!r})"
+
+    #  User-friendly string representation
+    def __str__(self):
+
+        #  Returns user-friendly string representation
+        if self.amount > 0:
+            return f"{self.timestamp.strftime('%Y-%m-%d')}: +${self.amount:,.2f}"
+        else:
+            return f"{self.timestamp.strftime('%Y-%m-%d')}: -${abs(self.amount):,.2f}"
+
+sample_transaction = Transaction(-200)
+
+print(sample_transaction)

@@ -80,7 +80,7 @@ def test_repr():
     assert repr(test_transaction) == expected_repr
 
 def test_str_with_positive_amount():
-    """Tests that str method returns the expected string output"""
+    """Tests that str method returns the expected string output with a positive amount"""
 
     #  Passed as argument for 'timestamp'
     test_timestamp = datetime.datetime(2024, 1, 1, 12, 0)
