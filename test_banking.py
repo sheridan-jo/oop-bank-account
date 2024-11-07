@@ -14,6 +14,7 @@ Run this test module using pytest.
 Imports:
     banking: Used for accurate representation of dollar values.
     datetime: Provides date and time for transaction timestamps.
+    Decimal: Used for accurate representation of dollar values.
 
 Documented according to Google Style Docstrings
 https://google.github.io/styleguide/pyguide.html
@@ -21,8 +22,10 @@ https://google.github.io/styleguide/pyguide.html
 """
 
 import datetime
+from decimal import Decimal
 from banking import Account, Transaction
 
+#  Tests for Account
 
 def test_initialization():
     """Test that account object is initialized with transactions attribute"""
@@ -30,6 +33,20 @@ def test_initialization():
 
     #  Passes if transactions[] is empty
     assert not test_account.transactions
+
+def test_deposit():
+    """
+    Test that the deposit method accepts an amount parameter,
+    converts it to a positive value and creates a new
+    instance of a Transaction.
+    """
+    test_account = Account()  #  Account object initialized for testing
+
+    test_account.deposit(-100)
+
+    assert test_account.transactions[-1].amount == Decimal(100)
+
+#  Tests for Transaction
 
 def test_amount():
     """Test that the 'amount' parameter of 'Transaction' class is bound to self"""
@@ -61,7 +78,6 @@ def test_timestamp_without_argument():
 
     #  Passes if timestamp property is close to the current time
     assert start_time <= test_transaction.timestamp <= end_time
-
 
 def test_repr():
     """Tests that repr method returns the expected string output"""
