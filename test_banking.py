@@ -64,6 +64,25 @@ def test_withdraw():
     #  Passes if the last transaction amount is stored as a negative Decimal Value
     assert test_account.transactions[-1].amount == Decimal('-99.99')
 
+def test_get_balance_with_no_transactions():
+    """Tests that 0 is returned if no transactions exist in an Account object"""
+
+    test_account = Account()  #  Account object initialized for testing
+
+    assert test_account.get_balance() == 0
+
+def test_get_balance_with_transactions():
+    """Tests that 'get_balance' returns the sum of all transactions"""
+
+    test_account = Account()  #  Account object initialized for testing
+
+    test_account.deposit(100)  #  Deposits 100 into the account
+    test_account.withdraw(90)  #  Withdraws 90 from the account
+    test_account.deposit(10)  #  Deposits 10 into the account
+
+    #  Passes if the sum of all transactions is 20
+    assert test_account.get_balance() == 20
+
 #  Tests for Transaction
 
 def test_amount():

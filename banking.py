@@ -69,6 +69,16 @@ class Account:
         transaction = Transaction(amount)  # Creates Transaction instance
         self.transactions.append(transaction)  #  Appends instance to list of transactions
 
+    def get_balance(self):
+        """Returns the sum of all transactions stored on the Account object."""
+
+        balance = 0  #  Sum of each transaction instance, initialized as 0
+
+        for transaction in self.transactions:  #  Iterates over each transaction
+            balance += transaction.amount  #  Amount of each transaction added to balance
+
+        return balance  #  Returns the sum of each transaction
+
 #  Code for the Transaction class
 
 class Transaction:
