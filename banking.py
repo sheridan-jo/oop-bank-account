@@ -2,7 +2,7 @@
 Python Development II
 Assignment 5 - OOP Bank Account
 John O.
-October 31, 2024
+November 10, 2024
 
 This program models a bank account. It contains a class called 'Account'
 which contains the property 'transactions',as well as the methods
@@ -20,9 +20,6 @@ Imports:
 
 Documented according to Google Style Docstrings
 https://google.github.io/styleguide/pyguide.html
-
-
-
 """
 
 from decimal import Decimal
@@ -38,6 +35,7 @@ class Account:
         transactions: A list of deposits and withdrawals
     """
 
+    #  Account class constructor
     def __init__(self):
         self.transactions = []  # Initializes an empty transaction list for each account.
 
@@ -46,16 +44,30 @@ class Account:
             Creates a deposit transaction and adds it to the list of transactions.
 
             Parameters:
-            amount(Decimal): The amount to be deposited, as a positive value
+            amount(Decimal): The amount to be deposited, as a positive value.
         """
 
         #  Ensures that 'amount' is converted to a Decimal
         amount = Decimal(amount) if isinstance(amount, Decimal) else Decimal(str(amount))
-        amount = abs(amount)  # Converts 'amount' to positive value
+        amount = abs(amount)  # Converts 'amount' to a positive value
 
-        #  Creates Transaction instance and appends it to the list of transactions
-        transaction = Transaction(amount)
-        self.transactions.append(transaction)
+        transaction = Transaction(amount)  # Creates Transaction instance
+        self.transactions.append(transaction)  #  Appends instance to list of transactions
+
+    def withdraw(self, amount):
+        """
+            Creates a 'withdraw' transaction and adds it to the list of transactions.
+
+            Parameters:
+            amount(Decimal): The amount to be withdrawn, as a negative value.
+        """
+
+        #  Ensures that 'amount' is converted to a Decimal
+        amount = Decimal(amount) if isinstance(amount, Decimal) else Decimal(str(amount))
+        amount = -abs(amount)  # Converts 'amount' to a negative value
+
+        transaction = Transaction(amount)  # Creates Transaction instance
+        self.transactions.append(transaction)  #  Appends instance to list of transactions
 
 #  Code for the Transaction class
 

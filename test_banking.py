@@ -3,7 +3,7 @@ Python Development II
 Assignment 5 - OOP Bank Account
 Test Suite for banking.py module
 John O.
-October 31, 2024
+November 10, 2024
 
 This is a test suite for the banking.py module which tests its
 properties and methods.
@@ -12,8 +12,11 @@ Usage:
 Run this test module using pytest.
 
 Imports:
-    banking: Used for accurate representation of dollar values.
     datetime: Provides date and time for transaction timestamps.
+    Account: For testing deposit, withdraw, and balance retrieval
+        methods and transactions property
+    Transaction: For testing properties and methods of Transaction
+        class.
     Decimal: Used for accurate representation of dollar values.
 
 Documented according to Google Style Docstrings
@@ -38,7 +41,7 @@ def test_deposit():
     """
     Test that the deposit method accepts an amount parameter,
     converts it to a positive value and creates a new
-    instance of a Transaction.
+    instance of a Transaction appended to transactions list.
     """
     test_account = Account()  #  Account object initialized for testing
 
@@ -46,6 +49,20 @@ def test_deposit():
 
     #  Passes if the last transaction amount is stored as a positive Decimal value
     assert test_account.transactions[-1].amount == Decimal(100)
+
+def test_withdraw():
+    """
+        Test that the 'withdraw' method accepts an amount parameter,
+        converts it to a negative value and creates a new
+        instance of a Transaction appended to transactions list.
+    """
+
+    test_account = Account()  # Account object initialized for testing
+
+    test_account.withdraw(99.99)  #  Value for amount parameter
+
+    #  Passes if the last transaction amount is stored as a negative Decimal Value
+    assert test_account.transactions[-1].amount == Decimal('-99.99')
 
 #  Tests for Transaction
 
