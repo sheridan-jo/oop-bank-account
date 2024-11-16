@@ -112,6 +112,6 @@ class Transaction:
         if self.amount > 0:
             #  Representation of deposits
             return f"{self.timestamp.strftime('%Y-%m-%d')}: +${self.amount:,.2f}"
-        else:
-            #  Representation of withdrawals
-            return f"{self.timestamp.strftime('%Y-%m-%d')}: -${abs(self.amount):,.2f}"
+
+        #  Representation of withdrawals
+        return f"{self.timestamp.strftime('%Y-%m-%d')}: -${abs(self.amount):,.2f}"
