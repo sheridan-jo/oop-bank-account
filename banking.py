@@ -2,7 +2,7 @@
 Python Development II
 Assignment 5 - OOP Bank Account
 John O.
-November 10, 2024
+November 16, 2024
 
 This program models a bank account. It contains a class called 'Account'
 which contains the property 'transactions',as well as the methods
